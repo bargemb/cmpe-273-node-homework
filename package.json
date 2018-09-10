@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/bargemb/cmpe-273-node-homework/issues"
   },
-  "homepage": "https://github.com/bargemb/cmpe-273-node-homework#readme"
+  "homepage": "https://github.com/bargemb/cmpe-273-node-homework#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
