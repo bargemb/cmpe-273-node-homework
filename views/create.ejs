@@ -1,0 +1,46 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="container">
+    <h3>User Information</h3>
+    <ul class="nav nav-pills">
+        <li class="active"><a href="/create">Create User</a></li>
+        <li ><a href="/report">User Report</a></li>
+    </ul>
+</div>
+<p></p>
+<br/>
+<div class="container">
+    <form action="http://127.0.0.1:3000/create" method="post">
+        <div style="width: 30%" class="form-group">
+            <input  type="text" class="form-control" name="stuName" placeholder="Student Name" required
+                    oninvalid="this.setCustomValidity('Please enter student name')"
+                    oninput="this.setCustomValidity('')">
+        </div>
+        <br/>
+        <div style="width: 30%" class="form-group">
+            <input  type="text" class="form-control" name="stuId" placeholder="Student ID" required
+                    oninvalid="this.setCustomValidity('Please enter student ID')"
+                    oninput="this.setCustomValidity('')">
+        </div>
+        <br/>
+        <div style="width: 30%" class="form-group">
+            <input  type="text" class="form-control" name="deptName" placeholder="Department" required
+                    oninvalid="this.setCustomValidity('Please enter department name')"
+                    oninput="this.setCustomValidity('')">
+        </div>
+        <br/>
+        <div style="width: 30%;">
+            <button class="btn btn-success" type="reset">Clear</button>
+            <button class="btn btn-success" type="submit">Add User</button>
+        </div>
+    </form>
+</div>
+</body>
+</html>
