@@ -29,8 +29,16 @@ var students = [];
 app.get('/', function(req, res){
     if(req.session.user){
         res.redirect('create');
-    }else {
+    }else{
         res.render('login');
+    }
+});
+
+app.get('/login', function(req, res){
+    if(req.session.user){
+        res.redirect('create');
+    }else{
+        res.redirect('/');
     }
 });
 
@@ -42,8 +50,7 @@ app.post('/login',function(req, res){
             if(user.username === req.body.username && user.password === req.body.password){
                 req.session.user = user;
                 res.redirect('create');
-            }
-            else {
+            }else{
                 res.render('login',{
                     "invalidCred" : "Invalid Username OR Password"
                 });
@@ -67,11 +74,12 @@ app.post('/create',function(req, res){
         if(students.find(function (stu) {
             return stu.stuId == req.body.stuId;
         })){
+            console.log(req.body);
             res.render('create',{
                 "duplicate": "Student ID already exist"
             });
-        }
-        else {
+        }else{
+            console.log(req.body);
             var newStudent = {stuName: req.body.stuName, stuId: req.body.stuId, department : req.body.deptName};
             students.push(newStudent);
             res.redirect('report');
@@ -95,18 +103,19 @@ app.post('/delete',function(req, res){
     if(!req.session.user){
         res.redirect('/');
     }else{
-
         var index = students.map(function(student){
             return student.stuId;
         }).indexOf(req.body.dbutton);
-        console.log(index);
-        console.log(students);
+        console.log(students[index]);
         students.splice(index, 1);
-        console.log(students);
         res.render('report',{
             students: students
         });
     }
+});
+
+app.get('*', function(req, res){
+    res.redirect('/');
 });
 
 var server = app.listen(3000, function () {

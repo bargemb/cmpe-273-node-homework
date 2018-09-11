@@ -21,19 +21,22 @@
         <div style="width: 30%" class="form-group">
             <input  type="text" class="form-control" name="stuName" placeholder="Student Name" required
                     oninvalid="this.setCustomValidity('Please enter student name')"
-                    oninput="this.setCustomValidity('')">
+                    oninput="this.setCustomValidity('')"
+                    pattern="[a-zA-Z]+[ ][a-zA-Z]+">
         </div>
         <br/>
         <div style="width: 30%" class="form-group">
-            <input  type="text" class="form-control" name="stuId" placeholder="Student ID" required
+            <input  type="number" class="form-control" name="stuId" placeholder="Student ID" required
                     oninvalid="this.setCustomValidity('Please enter student ID')"
-                    oninput="this.setCustomValidity('')">
+                    oninput="this.setCustomValidity('')"
+                    min="11111111" max="999999999">
         </div>
         <br/>
         <div style="width: 30%" class="form-group">
             <input  type="text" class="form-control" name="deptName" placeholder="Department" required
                     oninvalid="this.setCustomValidity('Please enter department name')"
-                    oninput="this.setCustomValidity('')">
+                    oninput="this.setCustomValidity('')"
+                    pattern="[a-zA-Z]+[ ]*[a-zA-Z]+">
         </div>
         <br/>
         <div style="width: 30%;">
