@@ -64,18 +64,45 @@ app.post('/create',function(req, res){
     if(!req.session.user){
         res.redirect('/');
     }else{
-        var newStudent = {stuName: req.body.stuName, stuId: req.body.stuId, department : req.body.deptName};
-        students.push(newStudent);
+        if(students.find(function (stu) {
+            return stu.stuId == req.body.stuId;
+        })){
+            res.render('create',{
+                "duplicate": "Student ID already exist"
+            });
+        }
+        else {
+            var newStudent = {stuName: req.body.stuName, stuId: req.body.stuId, department : req.body.deptName};
+            students.push(newStudent);
+            res.redirect('report');
+        }
+    }
+});
+
+
+
+app.get('/report',function(req, res){
+    if(!req.session.user){
+        res.redirect('/');
+    }else{
         res.render('report',{
             students: students
         });
     }
 });
 
-app.get('/report',function(req, res){
+app.post('/delete',function(req, res){
     if(!req.session.user){
         res.redirect('/');
     }else{
+
+        var index = students.map(function(student){
+            return student.stuId;
+        }).indexOf(req.body.dbutton);
+        console.log(index);
+        console.log(students);
+        students.splice(index, 1);
+        console.log(students);
         res.render('report',{
             students: students
         });

@@ -40,6 +40,13 @@
             <button class="btn btn-success" type="reset">Clear</button>
             <button class="btn btn-success" type="submit">Add User</button>
         </div>
+        <p style="color:red;">
+            <%
+            if (locals.duplicate){%>
+            <%=locals.duplicate%>
+            <%}
+            %>
+        </p>
     </form>
 </div>
 </body>
